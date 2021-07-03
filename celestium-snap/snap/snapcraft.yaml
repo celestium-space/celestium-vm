@@ -1,0 +1,22 @@
+name: celestium
+base: core20
+version: '0.1'
+summary: Celestium
+description: |
+  Celestium.
+
+grade: devel
+confinement: devmode
+
+apps:
+  celestium-cli:
+    command: celestium-cli
+  celestium:
+    command: celestium.sh
+    daemon: simple
+
+parts:
+  celestium:
+    plugin: dump
+    source: dump
+    stage-snaps: [curl]
