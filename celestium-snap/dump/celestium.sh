@@ -1,4 +1,4 @@
-/# !/bin/bash -ex
+# !/bin/bash -ex
 sleep 10
 echo "\n\nStarting celestium" > /dev/tty1 > celestium.log
 # Generate 1000000 bytes of noice
