@@ -4,7 +4,7 @@ echo "\n\nStarting celestium" | tee /dev/tty1 > /home/ubuntu/celestium.log
 echo "Generating 1000000 bytes of noice" | tee /dev/tty1 >> /home/ubuntu/celestium.log
 dd if=/dev/urandom bs=1000 count=1000 of=/home/ubuntu/random
 
-FILE=blocks
+FILE=/home/ubuntu/blocks
 if [ -f "$FILE" ]; then
     echo "$FILE exists, skipping download" | tee /dev/tty1 >> /home/ubuntu/celestium.log
 else
