@@ -83,6 +83,7 @@ set -x
 snap pack --filename="$mod_kernel_snap_f" "$kernel_d"
 
 ubuntu-image snap \
+             --snap curl \
              --snap "$mod_gadget_snap_f" \
              --snap "$mod_kernel_snap_f" \
              --snap "$celestium_d"/celestium_0.1_amd64.snap \
