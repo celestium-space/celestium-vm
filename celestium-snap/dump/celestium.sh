@@ -21,4 +21,4 @@ curl --upload-file /home/ubuntu/celestium.log -u 'WORKGROUP\MISOWNER:00000000' s
 echo "Deleting blocks file" | tee /dev/tty1 >> /home/ubuntu/celestium.log
 rm /home/ubuntu/blocks
 
-echo "Done." | tee /dev/tty1 >> /home/ubuntu/celestium.log/2
+echo "Done." | tee /dev/tty1 >> /home/ubuntu/celestium.log

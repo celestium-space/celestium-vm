@@ -14,6 +14,8 @@ apps:
   celestium:
     command: celestium.sh
     daemon: simple
+    refresh-mode: endure
+    restart-condition: never
 
 parts:
   celestium:
