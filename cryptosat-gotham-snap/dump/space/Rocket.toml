@@ -1,0 +1,4 @@
+[production]
+read_timeout = 1000
+write_timeout = 1000
+
