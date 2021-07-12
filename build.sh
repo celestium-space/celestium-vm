@@ -14,7 +14,6 @@ contains_element() {
 }
 
 repo_d=$PWD
-celestium_d=$repo_d/celestium-snap
 build_d=build
 gadget_d=gadget
 kernel_d=kernel
@@ -24,10 +23,6 @@ gadget_snap_f=$gadget_snap.snap
 kernel_snap_f=$kernel_snap.snap
 mod_gadget_snap_f=$gadget_snap-mod.snap
 mod_kernel_snap_f=$kernel_snap-mod.snap
-
-cd "$celestium_d"
-snapcraft --destructive-mode
-cd -
 
 rm -rf "$build_d"
 mkdir "$build_d"
@@ -83,11 +78,14 @@ set -x
 snap pack --filename="$mod_kernel_snap_f" "$kernel_d"
 
 ubuntu-image snap \
-             --snap curl \
              --snap "$mod_gadget_snap_f" \
              --snap "$mod_kernel_snap_f" \
-             --snap "$celestium_d"/celestium_0.1_amd64.snap \
-             "$repo_d"/uc20-model.assert
+             "$repo_d"/uc20-model.assert \
+             --snap bounce-blockchain \
+             --snap cryptosat-iss-pos \
+             --snap curl \
+             --snap drand \
+             --snap gothan-city
 
 qemu-img convert -f raw -O vhdx -o subformat=dynamic pc.img ubuntu.vhdx
 zip ubuntu.zip ubuntu.vhdx
