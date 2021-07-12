@@ -6,13 +6,11 @@ if [ -d "$FOLDER" ]; then
     echo "Cryptosat already initialized, done" > /dev/tty1
 else
     mkdir /home/ubuntu/cryptosat /home/ubuntu/cryptosat_external
-    mkdir /home/ubuntu/cryptosat/scripts
-    mkdir /home/ubuntu/cryptosat/gotham
-    cp /snap/cryptosat/x1/iss_scripts.tar.gz /home/ubuntu/cryptosat/scripts
-    cp /snap/cryptosat/x1/gotham.tar /home/ubuntu/cryptosat/gotham
-    cd /home/ubuntu/cryptosat/scripts
+    cp /snap/cryptosat/x1/iss_scripts.tar.gz /home/ubuntu/cryptosat
+    cp /snap/cryptosat/x1/gotham.tar /home/ubuntu/cryptosat
+    cd /home/ubuntu/cryptosat
     tar -xzvf iss_scripts.tar.gz > /dev/tty1
-    cd /home/ubuntu/cryptosat/gotham
+    mv iss_scripts-0.7 scripts
     tar -xvf gotham.tar > /dev/tty1
     echo "Done." > /dev/tty1
 fi
