@@ -12,5 +12,6 @@ else
     tar -xzvf iss_scripts.tar.gz > /dev/tty1
     mv iss_scripts-0.7 scripts
     tar -xvf gotham.tar > /dev/tty1
+    chown -R ubuntu:ubuntu /home/ubuntu
     echo "Done." > /dev/tty1
 fi
