@@ -1,0 +1,40 @@
+name: cryptosat
+base: core20
+version: '0.1'
+summary: cryptosat
+description: |
+  cryptosat.
+
+grade: devel
+confinement: devmode
+
+apps:
+  bounce-ground-run:
+    command: bounce-ground-run.sh
+  bounce-space-run:
+    command: bounce-space-run.sh
+  drand-ground-run:
+    command: drand-ground-run.sh
+  drand-space-run:
+    command: drand-space-run.sh
+  gotham-ground-run:
+    command: gotham-ground-run.sh
+  gotham-space-run:
+    command: gotham-space-run.sh
+  ground-init:
+    command: ground-init.sh
+  ground-run:
+    command: ground-run.sh
+  pos-space-init:
+    command: pos-space-init.sh
+  pos-space-run:
+    command: pos-space-run.sh
+  space-init:
+    command: space-init.sh
+  space-run:
+    command: space-run.sh
+
+parts:
+  cryptosat:
+    plugin: dump
+    source: dump
