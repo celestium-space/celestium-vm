@@ -15,7 +15,6 @@ contains_element() {
 
 repo_d=$PWD
 cryptosat_d=$repo_d/cryptosat-snap
-gotham_d=$repo_d/cryptosat-gotham-snap
 build_d=build
 gadget_d=gadget
 kernel_d=kernel
@@ -27,9 +26,6 @@ mod_gadget_snap_f=$gadget_snap-mod.snap
 mod_kernel_snap_f=$kernel_snap-mod.snap
 
 cd "$cryptosat_d"
-snapcraft --destructive-mode
-cd -
-cd "$gotham_d"
 snapcraft --destructive-mode
 cd -
 
@@ -90,7 +86,6 @@ ubuntu-image snap --channel=edge \
              --snap "$mod_gadget_snap_f" \
              --snap "$mod_kernel_snap_f" \
              --snap "$cryptosat_d"/cryptosat_0.1_amd64.snap \
-             --snap "$gotham_d"/cryptosat_gotham_0.1_amd64.snap \
              --snap cryptosat-iss-pos \
              --snap drand \
              --snap bounce-blockchain \
