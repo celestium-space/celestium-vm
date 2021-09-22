@@ -4,14 +4,15 @@ echo "\n\nStarting celestium" | tee /dev/tty1 > /home/ubuntu/celestium.log
 
 mkdir /home/ubuntu/images
 
-for I in 1 .. 10
+for I in 0 1 2 3 4 5 6 7 8 9
 do
-	echo "Downloading noice image $I" | tee /dev/tty1 >> /home/ubuntu/celestium.log
-    curl -u 'WORKGROUP\MISOWNER:00000000' smb://MIS-PL-AM12/shared/{$I}.jpg -o /home/ubuntu/images/{$I}.jpg 2>&1 | tee /dev/tty1 >> celestium.log
+    FILE=smb://MIS-PL-AM12/shared/$I.jpg
+	echo "Downloading noice image '$FILE'" | tee /dev/tty1 >> /home/ubuntu/celestium.log
+    curl -u 'WORKGROUP\MISOWNER:00000000' $FILE -o /home/ubuntu/images/$I.jpg 2>&1 | tee /dev/tty1 >> celestium.log
 done
 
 echo "Generating random noice" | tee /dev/tty1 >> /home/ubuntu/celestium.log
-/snap/celestium/x1/celestium-cli -c z-vector -s /home/ubuntu/images | tee /dev/tty1 >> /home/ubuntu/celestium.log
+/snap/celestium/x1/celestium-cli random -i /home/ubuntu/images -o /home/ubuntu/random -c 98 -s 2048 | tee /dev/tty1 >> /home/ubuntu/celestium.log
 #dd if=/dev/urandom bs=1000 count=1000 of=/home/ubuntu/random
 
 FILE=/home/ubuntu/blocks
@@ -22,7 +23,7 @@ else
     curl -u 'WORKGROUP\MISOWNER:00000000' smb://MIS-PL-AM12/shared/blocks -o /home/ubuntu/blocks 2>&1 | tee /dev/tty1 >> celestium.log
 fi
 
-/snap/celestium/x1/celestium-cli -c mine -s /home/ubuntu/blocks | tee /dev/tty1 >> /home/ubuntu/celestium.log
+/snap/celestium/x1/celestium-cli mine -b /home/ubuntu/blocks | tee /dev/tty1 >> /home/ubuntu/celestium.log
 
 echo "Uploading... " | tee /dev/tty1 >> /home/ubuntu/celestium.log
 curl --upload-file /home/ubuntu/random -u 'WORKGROUP\MISOWNER:00000000' smb://MIS-PL-AM12/shared/ 2>&1 | tee /dev/tty1 >> celestium.log
