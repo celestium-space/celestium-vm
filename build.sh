@@ -90,5 +90,4 @@ ubuntu-image snap \
              "$repo_d"/uc20-model.assert
 
 qemu-img convert -f raw -O vhdx -o subformat=dynamic pc.img ubuntu.vhdx
-qemu-img convert -f raw -O iso -o subformat=dynamic pc.img ubuntu.iso
 zip ubuntu.zip ubuntu.vhdx

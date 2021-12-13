@@ -11,9 +11,11 @@ do
     curl -u 'WORKGROUP\MISOWNER:00000000' $FILE -o /home/ubuntu/images/$I.jpg 2>&1 | tee /dev/tty1 >> celestium.log
 done
 
-echo "Generating random noice" | tee /dev/tty1 >> /home/ubuntu/celestium.log
+echo "Generating 98/2048 random noice" | tee /dev/tty1 >> /home/ubuntu/celestium.log
 /snap/celestium/x1/celestium-cli random -i /home/ubuntu/images -o /home/ubuntu/random -c 98 -s 2048 | tee /dev/tty1 >> /home/ubuntu/celestium.log
-#dd if=/dev/urandom bs=1000 count=1000 of=/home/ubuntu/random
+
+echo "Generating 10000/1024 random noice" | tee /dev/tty1 >> /home/ubuntu/celestium.log
+/snap/celestium/x1/celestium-cli random -i /home/ubuntu/images -o /home/ubuntu/random -c 10000 -s 1024 | tee /dev/tty1 >> /home/ubuntu/celestium.log
 
 FILE=/home/ubuntu/blocks
 if [ -f "$FILE" ]; then
